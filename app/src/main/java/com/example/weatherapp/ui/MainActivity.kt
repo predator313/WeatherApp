@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
+import com.example.weatherapp.BuildConfig
 import com.example.weatherapp.R
 import com.example.weatherapp.data.remote.RetrofitInstance
 import com.example.weatherapp.databinding.ActivityMainBinding
-import com.example.weatherapp.uits.API_KEY
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getDelhiWeather()
+
     }
     private fun getDelhiWeather(){
         lifecycleScope.launch(Dispatchers.IO){
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 RetrofitInstance.api.getCurrentWeather(
                     "New Delhi",
                     "metric",
-                    API_KEY
+                    BuildConfig.API_KEY
 
                 )
 
